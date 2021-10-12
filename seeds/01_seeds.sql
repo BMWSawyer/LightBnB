@@ -8,7 +8,7 @@ VALUES (1, 'Anna Bell', 'anna@belle.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.J
 (7, 'Hu-Ut Next', 'what.next@email.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.'),
 (8, 'Fine Ally Done', 'finally.done@lastemail.com', '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.');
 
-INSERT INTO properties (id, owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, postal_code)
+INSERT INTO properties (id, owner_id, title, description, thumbnail_photo_url, cover_photo_url, cost_per_night, parking_spaces, number_of_bathrooms, number_of_bedrooms, country, street, city, province, post_code)
 VALUES (1, 5, 'Little House on the Water', 'property_description', 'https://images.pexels.com/photos/2086676/pexels-photo-2086676.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/2086676/pexels-photo-2086676.jpeg', 149, 2, 2, 1, 'Canada', '4343 Wrong Way', 'Victoria', 'BC', 'V8W 1V2'),
 (2, 8, 'A Cozy Getaway', 'property_description', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/2121121/pexels-photo-2121121.jpeg', 600, 2, 3, 2, 'Canada', '7456 Somestreet Place', 'Victoria', 'BC', 'V8W 3V4'),
 (3, 1, 'Paradise Palace', 'property_description', 'https://images.pexels.com/photos/2080018/pexels-photo-2080018.jpeg?auto=compress&cs=tinysrgb&h=350', 'https://images.pexels.com/photos/2080018/pexels-photo-2080018.jpeg', 2350, 4, 5, 4, 'Canada', '1432 Beach Drive', 'Victoria', 'BC', 'V8W 5V6'),
