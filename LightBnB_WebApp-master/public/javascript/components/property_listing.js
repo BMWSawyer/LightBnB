@@ -2,8 +2,7 @@ $(() => {
   window.propertyListing = {};
   
   function createListing(property, isReservation) {
-    console.log(property);
-
+ 
     return `
     <article class="property-listing">
         <section class="property-listing__preview-image">
@@ -17,7 +16,7 @@ $(() => {
             <li>parking_spaces: ${property.parking_spaces}</li>
           </ul>
           ${isReservation ? 
-            `<p>${moment(property.start_date).format('ll')} - ${moment(property.end_date).format('ll')}</p>` 
+            `<p>${moment(property.start_date.substring(0, 10)).format('ll')} - ${moment(property.end_date.substring(0, 10)).format('ll')}</p>` 
             : `<button id="reserve-property-${property.id}" class="reserve-button">Reserve</button>`}
           <footer class="property-listing__footer">
             <div class="property-listing__rating">${Math.round(property.average_rating * 100) / 100}/5 stars</div>
