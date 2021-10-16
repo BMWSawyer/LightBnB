@@ -38,7 +38,7 @@ function getAllListings(params) {
   });
 }
 
-function getAllReservations() {
+function getFulfilledReservations() {
   let url = "/api/reservations";
   return $.ajax({
     url,
@@ -88,7 +88,4 @@ const deleteReservation = function(data) {
     method: "DELETE",
     url: `/api/reservations/${data}`,
   })
-  .then(() => {
-    $('.delete-button').closest('article').remove();
-  });
 }
