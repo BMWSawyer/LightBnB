@@ -84,9 +84,14 @@ exports.addUser = addUser;
 const getFulfilledReservations = function (guest_id, limit = 10) {
   return pool
     .query(
-      `SELECT properties.* FROM properties 
-      JOIN reservations ON reservations.property_id = properties.id 
-      WHERE reservations.guest_id = $1 LIMIT $2`,
+      `SELECT properties.*, reservations.*, avg(rating) as average_rating 
+      FROM properties 
+      JOIN reservations ON reservations.property_id = properties.id
+      JOIN property_reviews ON properties.id = property_reviews.property_id 
+      WHERE reservations.guest_id = $1 
+      AND reservations.end_date < now()::date
+      GROUP BY properties.id, reservations.id
+      LIMIT $2`,
       [guest_id, limit]
     )
     .then((result) => {
@@ -276,11 +281,12 @@ exports.getUpcomingReservations = getUpcomingReservations;
 //
 //  Updates an existing reservation with new information
 //
-const updateReservation = function(reservationId, newReservationData) {
+const updateReservation = function(newReservationData) {
   let queryString = `UPDATE reservations SET `;
   
   const queryParams = [];
-  
+  console.log(newReservationData);
+
   if (newReservationData.start_date) {
     queryParams.push(newReservationData.start_date);
     queryString += `start_date = $1`;
@@ -295,7 +301,7 @@ const updateReservation = function(reservationId, newReservationData) {
     queryString += `end_date = $1`;
   }
   
-  queryParams.push(reservationId);
+  queryParams.push(newReservationData.reservation_id);
   queryString += ` WHERE id = $${queryParams.length} RETURNING *;`
   
   
