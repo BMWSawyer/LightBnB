@@ -63,7 +63,7 @@ const addUser = function (user) {
   return pool
     .query(
       `INSERT INTO users (name, email, password) VALUES ($1, $2, $3)  RETURNING *`,
-      [user.name, user.email, "password"]
+      [user.name, user.email, '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.']
     )
     .then((result) => {
       return result.rows[0];
@@ -236,3 +236,16 @@ const addProperty = function (property) {
     });
 };
 exports.addProperty = addProperty;
+
+const addReservation = function(reservation) {
+  /*
+   * Adds a reservation from a specific user to the database
+   */
+  return pool.query(`
+    INSERT INTO reservations (start_date, end_date, property_id, guest_id)
+    VALUES ($1, $2, $3, $4) RETURNING *;
+  `, [reservation.start_date, reservation.end_date, reservation.property_id, reservation.guest_id])
+  .then(res => res.rows[0])
+}
+
+exports.addReservation = addReservation;
