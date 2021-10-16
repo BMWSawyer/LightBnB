@@ -43,6 +43,7 @@ $(() => {
       $('.delete-button').on('click', function() {
         const idData = $(this).attr('id').substring(16);
         deleteReservation(idData);
+        window.location.reload();
         console.log(`delete ${idData}`);          
       })
     }
