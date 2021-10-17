@@ -86,5 +86,19 @@ module.exports = function(router, database) {
     database.deleteReservation(reservationId);
   })
 
+   // get reviews by property
+   router.get('/reviews/:propertyId', (req, res) => {
+    const propertyId = req.params.propertyId
+    database.getReviewsByProperty(propertyId)
+    .then(reviews => {
+      res.send(reviews);
+    })
+  })
+
+  router.post('/reviews/:reservationId', (req, res) => {
+    database.addReview({...req.body})
+    .then(reviews => res.send(reviews))
+  })
+
   return router;
 }
