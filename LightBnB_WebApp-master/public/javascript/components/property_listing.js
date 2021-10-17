@@ -33,7 +33,7 @@ $(() => {
             } 
             
             ${!isReservation ? 
-              `<span id="review-details-${property.id}" class="review_details">
+              `<span id="review-details-${property.id}" class="review_details review_count">
               Browse ${property.review_count} reviews
               </span>
               ` : ``
