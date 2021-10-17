@@ -12,32 +12,39 @@ $(() => {
     $signUpForm.detach();
     $newReservationForm.detach();
     $updateReservationForm.detach();
+    $propertyReviews.detach();
+    $newReviewForm.detach();
     $("#reservation-details").remove();
 
-    let datatag = "";
+    let dataTag = "";
 
     switch (item) {
       case 'listings':
         $propertyListings.appendTo($main);
         break;
+     
       case 'newProperty':
         $newPropertyForm.appendTo($main);
         break;
+      
       case 'searchProperty':
         $searchPropertyForm.appendTo($main);
         break;
+      
       case 'logIn':
         $logInForm.appendTo($main);
         break;
+      
       case 'signUp':
         $signUpForm.appendTo($main);
         break;
+      
       case 'newReservation':
-        //console.log("This is the data: ", data)
         dataTag = `<h4>${data}</h4>`;
         $newReservationForm.appendTo($main);
         $(dataTag).appendTo("#datatag");
         break;
+      
       case 'updateReservation':
         // since we're getting more information here, we can include this in an extended data tag:
         dataTag = `
@@ -59,8 +66,20 @@ $(() => {
         $updateReservationForm.appendTo($main);
         $(dataTag).appendTo("#datatag");
         $(errorMessage).appendTo('#error-message');
-        
         break;
+      
+      case 'showReviews':
+        getReviewsByProperty(data)
+        .then(reviews => propertyReviews.addReviews(reviews))
+        $propertyReviews.appendTo($main);
+        break;
+      
+      case 'newReview':
+        dataTag = `<h4>${data}</h4>`;
+        $newReviewForm.appendTo($main);
+        $(dataTag).appendTo("#datatag");
+        break;
+
       case 'error': {
         const $error = $(`<p>${arguments[1]}</p>`);
         $error.appendTo('body');
