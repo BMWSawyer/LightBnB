@@ -162,10 +162,6 @@ $(() => {
     event.preventDefault();
     views_manager.show('none');
     const formArray = $(this).serializeArray();
-
-    console.log(formArray);
-    console.log(this);
-    
     const startDate = `${formArray[2].value}-${formArray[1].value}-${formArray[0].value}`
     const endDate = `${formArray[5].value}-${formArray[4].value}-${formArray[3].value}`
     const propertyId = $(this).find("#datatag h4").text();
