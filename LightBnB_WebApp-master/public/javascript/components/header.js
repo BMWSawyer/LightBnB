@@ -51,10 +51,7 @@ $(() => {
       .then(function(json) {
         propertyListings.addProperties(json.reservations, { upcoming: false });
         getUpcomingReservations()
-        .then(json => {
-          
-          propertyListings.addProperties(json.reservations, { upcoming: true })
-        })
+        .then(json => propertyListings.addProperties(json.reservations, { upcoming: true }))
         views_manager.show('listings');
       })
       .catch(error => console.error(error));
